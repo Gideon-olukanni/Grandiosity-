@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Frontier Builder OS — A Living Constitution for Ideas</title>
+<meta name="description" content="An interactive prototype explaining a builder's ideology: ancient principles, hypothesis testing, technology, systems, institutions, networks, and future-building." />
+<style>
+  :root{
+    --bg:#070b12; --panel:#0d1420; --panel2:#111b29; --text:#eaf2ff; --muted:#95a8bd;
+    --line:#243348; --accent:#67f5b5; --accent2:#7aa7ff; --gold:#e6c46a; --danger:#ff7d7d;
+    --shadow:0 18px 60px rgba(0,0,0,.35); --radius:20px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:radial-gradient(circle at 20% -10%,#14283a 0,#070b12 42%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1200px;margin:auto;padding:0 22px}
+  header{position:sticky;top:0;z-index:10;background:rgba(7,11,18,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
+  nav{display:flex;gap:14px;align-items:center;justify-content:space-between;min-height:66px}
+  .brand{font-weight:900;letter-spacing:.04em}.brand span{color:var(--accent)}
+  .navlinks{display:flex;gap:7px;overflow:auto;white-space:nowrap}.navlinks a{padding:8px 10px;border-radius:10px;color:#b9c6d7;font-size:13px}.navlinks a:hover{background:#131d2b;color:white}
+  .hero{padding:92px 0 58px;display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:center}
+  .eyebrow{color:var(--accent);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800}
+  h1{font-size:clamp(42px,7vw,82px);line-height:.97;margin:15px 0 20px;max-width:900px}
+  .hero p{font-size:20px;color:#c8d4e4;max-width:780px}.quote{font-size:26px;color:#fff;font-weight:700;border-left:3px solid var(--accent);padding-left:16px;margin:28px 0}
+  .hero-card{background:linear-gradient(145deg,#101c2b,#0a111b);border:1px solid var(--line);border-radius:28px;padding:24px;box-shadow:var(--shadow)}
+  .hero-card h3{margin-top:0}.metric{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #1c2938}.metric:last-child{border-bottom:0}.metric b{color:var(--accent)}
+  section{padding:65px 0}.section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:25px}.section-head h2{font-size:36px;margin:0}.section-head p{max-width:650px;color:var(--muted);margin:0}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .card{background:linear-gradient(180deg,rgba(17,27,41,.96),rgba(12,19,29,.96));border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+  .card h3{margin:0 0 8px}.card p,.card li{color:#b6c4d5}.tag{display:inline-block;font-size:11px;font-weight:800;padding:5px 8px;border-radius:999px;background:#142536;color:var(--accent);border:1px solid #244560;margin-bottom:10px}
+  .steps{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.step{padding:16px 10px;text-align:center;border:1px solid var(--line);border-radius:15px;background:#0c141f}.step b{display:block;color:var(--accent);font-size:13px;margin-bottom:5px}.step span{font-size:12px;color:#b7c3d0}
+  .lens-buttons{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:16px}.lens-buttons button,.btn{border:1px solid var(--line);background:#0c141f;color:#dce7f5;padding:10px 13px;border-radius:12px;cursor:pointer;font:inherit}.lens-buttons button.active,.btn.primary{background:var(--accent);color:#06100b;border-color:var(--accent);font-weight:900}
+  .lens-output{min-height:150px}.lens-output h3{margin-top:0}.lens-output p{color:#c2cfdd}
+  .table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:12px;border-bottom:1px solid var(--line);vertical-align:top}.table th{color:var(--accent);font-size:13px}.table td{color:#c5d1de}
+  .interactive textarea,.interactive input,.interactive select{width:100%;background:#08111b;color:#edf5ff;border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit}.interactive textarea{min-height:130px;resize:vertical}.interactive label{font-weight:700;font-size:13px;display:block;margin:10px 0 6px}.output{margin-top:16px;padding:18px;border:1px dashed #33516d;border-radius:16px;background:#08111b}.output strong{color:var(--accent)}
+  .constitution li{margin:11px 0}.danger{border-color:#5a3038}.danger .tag{color:#ffabab;background:#25161b;border-color:#5a3038}
+  .dictionary{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.term{padding:15px;border:1px solid var(--line);border-radius:14px;background:#0a121d}.term b{color:var(--gold);display:block;margin-bottom:4px}.term span{color:#c3cfdb;font-size:14px}
+  footer{padding:55px 0 80px;color:#7f93aa;border-top:1px solid var(--line)}
+  .manifesto{font-size:20px;line-height:1.7;color:#dbe7f4}.manifesto strong{color:white}
+  @media(max-width:900px){.hero{grid-template-columns:1fr}.grid,.grid2,.dictionary{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav><div class="brand">FRONTIER <span>BUILDER OS</span></div><div class="navlinks"><a href="#core">Core</a><a href="#lenses">Lenses</a><a href="#engine">Engine</a><a href="#constitution">Constitution</a><a href="#dictionary">Dictionary</a><a href="#questions">Questions</a><a href="#network">Network</a></div></nav></div></header>
+
+<main>
+<section class="hero wrap">
+  <div>
+    <div class="eyebrow">A communication prototype • Version 1</div>
+    <h1>I don't want to predict the future. I want to build systems that can create it.</h1>
+    <p>This prototype translates a complex builder's worldview into a language other people can understand: researchers, engineers, entrepreneurs, governments, consumers, poor communities, investors, educators, and future builders.</p>
+    <div class="quote">Start from one. Test it. Learn from it. Build the next system.</div>
+    <p class="manifesto"><strong>The central identity:</strong> a builder who searches across history, mathematics, psychology, neuroscience, engineering, computing, economics and human behavior; extracts useful principles; turns them into hypotheses; tests them; builds tools; teaches the process; and connects people who can extend the system.</p>
+  </div>
+  <div class="hero-card">
+    <h3>The builder in one model</h3>
+    <div class="metric"><span>Input</span><b>Problem + curiosity</b></div>
+    <div class="metric"><span>Raw material</span><b>Existing knowledge + scraps</b></div>
+    <div class="metric"><span>Method</span><b>Hypotheses + simulation</b></div>
+    <div class="metric"><span>Output</span><b>Prototype + data</b></div>
+    <div class="metric"><span>Scale</span><b>People + networks</b></div>
+    <div class="metric"><span>Legacy</span><b>New principles + institutions</b></div>
+  </div>
+</section>
+
+<section id="core"><div class="wrap">
+  <div class="section-head"><div><div class="eyebrow">01 / Core ideology</div><h2>What this person is actually trying to do</h2></div><p>Not “I have many interests.” The stronger interpretation is: “I am building a general method for converting knowledge into working systems.”</p></div>
+  <div class="grid">
+    <article class="card"><span class="tag">IDENTITY</span><h3>Generalist → Integrator → Builder</h3><p>Learn across domains, then connect the domains. Mathematics gives structure; engineering gives physical reality; computing gives scale; psychology gives human insight; neuroscience gives biological context; entrepreneurship gives economic survival.</p></article>
+    <article class="card"><span class="tag">METHOD</span><h3>Hypothesis first</h3><p>Every strong idea becomes a claim that can be tested. A test produces data. Data creates another hypothesis. The system keeps learning instead of pretending the first idea was perfect.</p></article>
+    <article class="card"><span class="tag">MATERIAL</span><h3>Existing things are raw material</h3><p>Scraps, open tools, old inventions, failed projects, forgotten principles and ordinary objects are not useless. The question is what new function can emerge when they are recombined.</p></article>
+    <article class="card"><span class="tag">COMMUNICATION</span><h3>Make the invisible understandable</h3><p>Deep thinking is not enough. The builder must create diagrams, language, simulations, books, prototypes, demonstrations and questions that allow another person to see the system.</p></article>
+    <article class="card"><span class="tag">INSTITUTION</span><h3>Build rules that resist manipulation</h3><p>Systems need constitutions, permissions, transparent incentives, audit trails, exit rights and adaptation mechanisms so that growth does not require blind trust in one person.</p></article>
+    <article class="card"><span class="tag">MISSION</span><h3>Rebuild from first principles</h3><p>The extreme thought experiment is useful: “If everything disappeared, what knowledge, infrastructure, skills and institutions would we rebuild first?” That turns patriotism or ambition into an engineering problem.</p></article>
+  </div>
+</div></section>
+
+<section id="lenses"><div class="wrap">
+  <div class="section-head"><div><div class="eyebrow">02 / Different people, different translation</div><h2>The same person seen through six lenses</h2></div><p>People often misunderstand builders because they interpret them through their own environment. Switch the lens to change the language—not the underlying principles.</p></div>
+  <div class="lens-buttons" id="lensButtons">
+    <button class="active" data-lens="builder">Builder</button><button data-lens="usa">US innovation lens</button><button data-lens="poor">Resource-constrained lens</button><button data-lens="consumer">Consumer lens</button><button data-lens="government">Institution lens</button><button data-lens="future">Future lens</button>
+  </div>
+  <div class="card lens-output" id="lensOutput"></div>
+</div></section>
+
+<section id="engine"><div class="wrap">
+  <div class="section-head"><div><div class="eyebrow">03 / The Reality Engine</div><h2>How an idea moves from thought to reality</h2></div><p>This is the repeatable engine underneath the ideology. It prevents “big thinking” from becoming only big talking.</p></div>
+  <div class="steps">
+    <div class="step"><b>01</b><span>Observe</span></div><div class="step"><b>02</b><span>Question</span></div><div class="step"><b>03</b><span>Hypothesize</span></div><div class="step"><b>04</b><span>Model</span></div><div class="step"><b>05</b><span>Build</span></div><div class="step"><b>06</b><span>Measure</span></div><div class="step"><b>07</b><span>Adapt / Scale</span></div>
+  </div>
+  <div class="grid2" style="margin-top:16px">
+    <div class="card interactive">
+      <span class="tag">LIVE PROTOTYPE</span><h3>Idea → test plan</h3>
+      <label for="idea">Put a rough idea here</label><textarea id="idea" placeholder="Example: Build a system that helps skilled young people discover what they are unusually good at."></textarea>
+      <button class="btn primary" onclick="generatePlan()">Generate a first-principles test</button>
+      <div id="planOutput" class="output" hidden></div>
+    </div>
+    <div class="card interactive">
+      <span class="tag">FAILURE ENGINE</span><h3>Turn failure into information</h3>
+      <label for="failure">What failed?</label><textarea id="failure" placeholder="Describe the result without defending yourself."></textarea>
+      <button class="btn" onclick="reframeFailure()">Convert failure into hypotheses</button>
+      <div id="failureOutput" class="output" hidden></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="constitution"><div class="wrap">
+  <div class="section-head"><div><div class="eyebrow">04 / Living constitution</div><h2>Rules for a system that can grow without becoming a dictatorship</h2></div><p>The constitution is not about controlling people. It is about creating predictable rules for adaptation, participation, accountability and exit.</p></div>
+  <div class="grid2">
+    <div class="card constitution">
+      <span class="tag">FOUNDING PRINCIPLES</span>
+      <ol>
+        <li><strong>Reality before reputation.</strong> Claims must eventually face evidence.</li>
+        <li><strong>Questions before certainty.</strong> A good question can be more valuable than a confident answer.</li>
+        <li><strong>Build small before scaling big.</strong> A prototype earns the right to become an institution.</li>
+        <li><strong>Every system needs an exit.</strong> People should be able to leave, fork, adapt or disagree without destroying the whole structure.</li>
+        <li><strong>Power requires constraints.</strong> No individual should be the only source of truth, permission or verification.</li>
+        <li><strong>Data should create learning.</strong> Measurement is for improving the system, not merely decorating presentations.</li>
+        <li><strong>Old knowledge is evidence, not a prison.</strong> Ancient principles can inspire new designs while remaining open to testing.</li>
+        <li><strong>Teach the method.</strong> The goal is not followers; it is people who can eventually build without you.</li>
+      </ol>
+    </div>
+    <div class="card constitution danger">
+      <span class="tag">ANTI-CORRUPTION CHECKS</span>
+      <p>Any growing builder system should ask:</p>
+      <ul>
+        <li>Who verifies the verifier?</li>
+        <li>Can the rules be changed secretly?</li>
+        <li>What happens when the founder is wrong?</li>
+        <li>Can participants see the assumptions behind decisions?</li>
+        <li>What incentive would cause someone to manipulate the system?</li>
+        <li>Can another team reproduce the result?</li>
+        <li>Can the system survive if the original builder disappears?</li>
+      </ul>
+      <p><strong>The ideal:</strong> a system that becomes stronger through criticism rather than weaker through disagreement.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="dictionary"><div class="wrap">
+  <div class="section-head"><div><div class="eyebrow">05 / Personal dictionary</div><h2>A language for the worldview</h2></div><p>New systems become easier to communicate when recurring concepts have precise names.</p></div>
+  <div class="dictionary">
+    <div class="term"><b>Frontier Builder</b><span>A person who moves between disciplines to create something that did not previously exist in that form.</span></div>
+    <div class="term"><b>Reality Engine</b><span>The loop that converts questions into hypotheses, models, prototypes, evidence and improved hypotheses.</span></div>
+    <div class="term"><b>Principle Mining</b><span>Extracting durable ideas from history, science, engineering, culture and failed attempts, then testing their modern usefulness.</span></div>
+    <div class="term"><b>Constraint Alchemy</b><span>Using scarcity, scraps, limits or lack of resources as design inputs rather than excuses.</span></div>
+    <div class="term"><b>Idea Frontier</b><span>The space of plausible combinations that have not yet been tested in a specific real-world context.</span></div>
+    <div class="term"><b>Constitutional Flexibility</b><span>Rules designed to preserve core principles while allowing the system to change its implementation.</span></div>
+    <div class="term"><b>Hypothesis Cascade</b><span>One experiment produces evidence that creates several better questions instead of ending the investigation.</span></div>
+    <div class="term"><b>Human-Skill Compression</b><span>Turning a complex skill or insight into a teachable tool, process, interface or curriculum.</span></div>
+    <div class="term"><b>Builder Network</b><span>A network of people who understand their strengths, collaborate across disciplines and create new capability together.</span></div>
+    <div class="term"><b>Institutional Memory</b><span>Recorded knowledge, rules, data and decisions that prevent a system from repeatedly forgetting what it has learned.</span></div>
+    <div class="term"><b>Future Artifact</b><span>A prototype, book, technology, dataset, protocol or institution designed to make a future state easier to reach.</span></div>
+    <div class="term"><b>Rebuild Test</b><span>A thought experiment asking what would be reconstructed first if a community had to rebuild from near-zero resources.</span></div>
+  </div>
+</div></section>
+
+<section id="questions"><div class="wrap">
+  <div class="section-head"><div><div class="eyebrow">06 / Communication layer</div><h2>Questions that make the builder understandable</h2></div><p>The fastest way to understand a complicated person is often to ask better questions.</p></div>
+  <div class="grid3 grid">
+    <div class="card"><h3>Origin</h3><ul><li>What problem keeps returning to your mind?</li><li>What did you notice that other people ignored?</li><li>Which old principle do you think deserves another test?</li></ul></div>
+    <div class="card"><h3>Method</h3><ul><li>How do you decide whether an idea is worth testing?</li><li>What would prove you wrong?</li><li>What do you measure before you scale?</li></ul></div>
+    <div class="card"><h3>People</h3><ul><li>Who is the system designed to serve?</li><li>What would a poor person see differently from an investor?</li><li>Who can challenge you safely?</li></ul></div>
+    <div class="card"><h3>Technology</h3><ul><li>What should be software, hardware, data, education or infrastructure?</li><li>What existing tool can become raw material?</li><li>What must remain human?</li></ul></div>
+    <div class="card"><h3>Institution</h3><ul><li>What rule prevents manipulation?</li><li>How can people exit or fork the system?</li><li>How does the institution survive the founder?</li></ul></div>
+    <div class="card"><h3>Future</h3><ul><li>What would this create if it worked for 20 years?</li><li>Which prediction are you testing?</li><li>What new problems would success create?</li></ul></div>
+  </div>
+</div></section>
+
+<section id="network"><div class="wrap">
+  <div class="section-head"><div><div class="eyebrow">07 / Network architecture</div><h2>One person is not the final system</h2></div><p>The long-term vision is a network of specialists who understand themselves, know what they can contribute and can connect into larger projects.</p></div>
+  <div class="grid">
+    <div class="card"><h3>Researchers</h3><p>Turn unknowns into evidence and expose weak assumptions.</p></div>
+    <div class="card"><h3>Engineers</h3><p>Convert principles into reliable physical and digital systems.</p></div>
+    <div class="card"><h3>Computational builders</h3><p>Model complexity, simulate outcomes and build scalable tools.</p></div>
+    <div class="card"><h3>Designers & communicators</h3><p>Make sophisticated ideas usable and understandable.</p></div>
+    <div class="card"><h3>Entrepreneurs</h3><p>Find real demand, distribution, incentives and sustainable economics.</p></div>
+    <div class="card"><h3>Institution builders</h3><p>Create governance, standards, memory, accountability and continuity.</p></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3>The network principle</h3><p class="manifesto">“I do not need to become every profession. I need to understand enough of many professions to connect the right people, identify the missing capability, build a first version, and create the conditions for others to become excellent.”</p></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="section-head"><div><div class="eyebrow">08 / The communication contract</div><h2>How to explain this person without making them sound vague</h2></div><p>Big ambitions become credible when the language connects them to specific behavior.</p></div>
+  <div class="card">
+    <table class="table">
+      <thead><tr><th>Do not say</th><th>Say instead</th></tr></thead>
+      <tbody>
+        <tr><td>“I want to change everything.”</td><td>“I want to build small, testable systems whose successful patterns can be scaled.”</td></tr>
+        <tr><td>“I know I won't fail.”</td><td>“I treat failure as unacceptable as a stopping point; when a method fails, I change the method and keep learning.”</td></tr>
+        <tr><td>“I have too many ideas.”</td><td>“I maintain a large hypothesis space, then narrow it using evidence, constraints and experiments.”</td></tr>
+        <tr><td>“I want to build a new government.”</td><td>“I am interested in designing institutional rules that are adaptable, auditable, difficult to manipulate and useful to the people inside them.”</td></tr>
+        <tr><td>“I like ancient knowledge and futuristic technology.”</td><td>“I search for durable principles across history and test whether they can solve modern engineering and human problems.”</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="eyebrow">FRONTIER BUILDER OS</div>
+  <h2>Build the first thing. Let the first thing teach you what to build next.</h2>
+  <p>This is a prototype communication layer, not a final biography. Its purpose is to give other people a model they can question, challenge, improve and eventually use themselves.</p>
+</div></footer>
+
+<script>
+const lensData={
+  builder:{title:'Builder lens',lead:'“This is a person who wants to turn knowledge into working systems.”',body:'The builder sees the world as a workshop. Problems become design inputs. Existing products become components. Old principles become hypotheses. Constraints become engineering parameters. The objective is not to sound futuristic; it is to create prototypes that can survive contact with reality.'},
+  usa:{title:'US innovation lens',lead:'“This looks like a cross-disciplinary founder/researcher with an experimentation bias.”',body:'In a US innovation vocabulary, the strongest framing is founder + systems thinker + applied researcher. The useful questions become: What is the wedge? What is the experiment? Who has the pain? What is the moat? What evidence changes the roadmap? The worldview becomes legible through iteration, prototypes, distribution and measurable outcomes.'},
+  poor:{title:'Resource-constrained lens',lead:'“Build capability from what already exists.”',body:'In a resource-constrained environment, the philosophy becomes frugal engineering: use scraps, open tools, local skills and existing infrastructure; solve one painful problem; make the result affordable; document the process; then reuse the pattern. Scarcity becomes a constraint to design around, not a reason to stop.'},
+  consumer:{title:'Consumer lens',lead:'“What does this make easier, cheaper, safer or more understandable for me?”',body:'Consumers do not need the entire ideology. They need the consequence. A complicated builder system becomes understandable when it produces something they can use: a product, book, learning tool, interface, service, machine or network that solves a real problem better than the alternatives.'},
+  government:{title:'Institution lens',lead:'“How do we make the system survive people?”',body:'An institutional reading focuses on governance, incentives, transparency, auditability, succession, participation and exit rights. The important shift is from “one brilliant person controls the system” to “the rules allow many competent people to improve the system without breaking its core purpose.”'},
+  future:{title:'Future lens',lead:'“What capabilities should exist 10–50 years from now?”',body:'The future-oriented version asks which technologies, datasets, skills, institutions and cultural habits would make desired futures easier to reach. Predictions become experiments; experiments become prototypes; prototypes become infrastructure; infrastructure creates new possibilities.'}
+};
+function renderLens(key){const d=lensData[key];document.getElementById('lensOutput').innerHTML=`<h3>${d.title}</h3><p style="font-size:20px;color:white;font-weight:800">${d.lead}</p><p>${d.body}</p>`}
+document.querySelectorAll('#lensButtons button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('#lensButtons button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderLens(btn.dataset.lens)}));
+renderLens('builder');
+
+function generatePlan(){
+ const idea=document.getElementById('idea').value.trim(); const out=document.getElementById('planOutput');
+ if(!idea){out.hidden=false;out.innerHTML='<strong>Start with a problem.</strong><p>Write one rough idea or problem first.</p>';return}
+ out.hidden=false;out.innerHTML=`<strong>FIRST-PRINCIPLES TEST</strong>
+ <p><b>1. Claim:</b> ${idea}</p>
+ <p><b>2. Hidden assumption:</b> Someone actually experiences this problem often enough to care, and the proposed solution changes an important outcome.</p>
+ <p><b>3. Cheapest test:</b> Find 5–10 real people, show them a concrete version, measure what they do rather than what they say.</p>
+ <p><b>4. Evidence:</b> Track demand, completion, repeat use, willingness to recommend/pay, time saved or another outcome that matters.</p>
+ <p><b>5. Kill / adapt rule:</b> If the evidence is weak, change the assumption—not the measurement—to a new hypothesis and test again.</p>`;
+}
+function reframeFailure(){
+ const f=document.getElementById('failure').value.trim(); const out=document.getElementById('failureOutput');
+ if(!f){out.hidden=false;out.innerHTML='<strong>Describe the failure.</strong><p>State what happened without explaining why it was someone else’s fault.</p>';return}
+ out.hidden=false;out.innerHTML=`<strong>FAILURE → HYPOTHESIS CASCADE</strong>
+ <p><b>Observed result:</b> ${f}</p>
+ <p><b>Hypothesis A:</b> The original assumption about the user, environment, technology or incentive was wrong.</p>
+ <p><b>Hypothesis B:</b> The implementation was correct in principle but poorly matched to the constraints.</p>
+ <p><b>Hypothesis C:</b> The problem was real, but the proposed solution addressed the wrong layer of the problem.</p>
+ <p><b>Next move:</b> Design the smallest experiment that can distinguish A, B and C. Do not protect the original idea from evidence.</p>`;
+}
+</script>
+</body>
+</html>
